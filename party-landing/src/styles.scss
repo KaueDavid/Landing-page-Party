@@ -124,17 +124,6 @@ a:hover { color: #fff; }
 }
 
 /* ---------- 4. Tipografia ---------- */
-.eyebrow {
-  display: inline-block;
-  font-family: var(--font-display);
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--brand-300);
-  margin: 0 0 18px;
-}
-
 h1, h2, h3 {
   margin: 0;
   font-family: var(--font-display);
@@ -228,8 +217,6 @@ p { line-height: 1.68; color: var(--text-muted); }
   transition: color 0.16s ease, border-color 0.16s ease;
 }
 .link-quiet:hover { color: var(--text); border-bottom-color: var(--brand-400); }
-.link-quiet .arrow { transition: transform 0.16s ease; }
-.link-quiet:hover .arrow { transform: translateX(3px); }
 
 /* ---------- 6. Superfícies ---------- */
 .card {
@@ -241,20 +228,7 @@ p { line-height: 1.68; color: var(--text-muted); }
   backdrop-filter: blur(10px);
   transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
 }
-/* Fio de luz no topo: dá volume à superfície sem pintar um bloco de cor.
-   Recuado nas pontas para não vazar do canto arredondado (o card não pode
-   ter overflow: hidden, porque a etiqueta dos planos fica para fora dele). */
-.card::before {
-  content: "";
-  position: absolute;
-  inset: 0 18% auto;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--brand-400), transparent);
-  opacity: 0.45;
-  transition: opacity 0.2s ease;
-}
 .card:hover { border-color: var(--border-strong); background: var(--surface-hover); }
-.card:hover::before { opacity: 0.9; }
 
 .chip {
   display: inline-flex;

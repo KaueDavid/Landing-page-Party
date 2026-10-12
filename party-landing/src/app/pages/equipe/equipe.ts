@@ -8,6 +8,7 @@ interface Membro {
   foco: string;
   github?: string;
   linkedin?: string;
+  foto?: string;
 }
 
 @Component({
@@ -20,6 +21,7 @@ export class Equipe {
   readonly membros: Membro[] = [
     {
       nome: 'Pedro Cardoso',
+      foto: 'equipe/pedro.jpg',
       papel: 'Organização do time',
       foco: 'Mantém todo mundo no mesmo ritmo: divide as tarefas, acompanha os prazos e é quem costura a conversa entre as pessoas.',
       github: 'PedroLima-07',
@@ -27,6 +29,7 @@ export class Equipe {
     },
     {
       nome: 'Luiz Eduardo',
+      foto: 'equipe/luiz.jpg',
       papel: 'Pesquisa e escrita',
       foco: 'Escreve o artigo do projeto e registra como o sistema funciona, para quem chegar depois entender tudo sem precisar perguntar.',
       github: 'luizeflss',
@@ -34,6 +37,7 @@ export class Equipe {
     },
     {
       nome: 'Nathan da Silva',
+      foto: 'equipe/nathan.jpg',
       papel: 'Dados do sistema',
       foco: 'Cuida de onde cada informação do +party fica guardada (pedidos, comandas e bares) e de como o app busca isso.',
       github: 'NathanDotAlves',
@@ -41,6 +45,7 @@ export class Equipe {
     },
     {
       nome: 'Gabriel Marques',
+      foto: 'equipe/gabriel.jpg',
       papel: 'Construção das telas',
       foco: 'Programa as telas do aplicativo, cuida para que funcionem bem no celular e liga cada botão ao que acontece por trás.',
       github: 'gabrielmarques23',
@@ -48,6 +53,7 @@ export class Equipe {
     },
     {
       nome: 'Kauê David Simões',
+      foto: 'equipe/kaue.jpg',
       papel: 'Design',
       foco: 'Desenha as telas antes de virarem código e define a cara do +party: as cores, a letra, o logo e o lugar de cada coisa.',
       github: 'KaueDavid',
@@ -55,6 +61,7 @@ export class Equipe {
     },
     {
       nome: 'Danilo Bossolani',
+      foto: 'equipe/danilo.jpg',
       papel: 'Números e divulgação',
       foco: 'Monta o painel que mostra lotação e vendas do bar, cuida desta landing page e do vídeo de apresentação.',
       github: 'danilobossolani',
@@ -62,6 +69,7 @@ export class Equipe {
     },
     {
       nome: 'Sabrina Montossa',
+      foto: 'equipe/sabrina.jpg',
       papel: 'Design',
       foco: 'Desenha no Figma os protótipos das telas pensando primeiro no celular, e cuida das peças que apresentam o +party, como o banner das apresentações.',
       github: 'Montossa',

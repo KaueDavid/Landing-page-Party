@@ -1,50 +1,61 @@
 <!-- ============ 1. INÍCIO ============ -->
+<!-- Layout assimétrico, inspirado no ticket de entrada de balada: texto
+     alinhado à esquerda (não centralizado) e o celular apoiado num bloco
+     de cor deslocado, como uma foto colada num mural. -->
 <section id="inicio" class="section hero">
-  <div class="shell">
-    <span class="selo">
-      <i aria-hidden="true"></i> Lotação dos bares em tempo real
-    </span>
+  <div class="shell hero-grid">
+    <div class="hero-copy">
+      <h1>
+        Seu rolê<br />
+        <span class="grad">começa aqui.</span>
+      </h1>
 
-    <h1>
-      Seu rolê<br />
-      <span class="grad">começa aqui.</span>
-    </h1>
+      <p class="lead">
+        O <strong>+party</strong> conecta quem sai para o rolê com os bares da cidade:
+        você vê como está o movimento antes de sair de casa e pede sem encarar fila.
+      </p>
 
-    <p class="lead">
-      O <strong>+party</strong> conecta quem sai para o rolê com os bares da cidade:
-      você vê como está o movimento antes de sair de casa e pede sem encarar fila.
-    </p>
+      <!-- Ticket de entrada: um único ponto de decisão (mesma regra do README),
+           só que desenhado como um ingresso de balada em vez de dois botões soltos. -->
+      <div class="ticket" role="group" aria-label="Escolha seu perfil">
+        <a routerLink="/planos/cliente" class="ticket-half ticket-primary">
+          <span class="ticket-label">Entrada</span>
+          Eu vou pro rolê
+        </a>
+        <a routerLink="/planos/estabelecimento" class="ticket-half ticket-ghost">
+          <span class="ticket-label">Acesso</span>
+          Eu tenho um bar
+        </a>
+      </div>
 
-    <ul class="provas">
-      <li>Sem fila no balcão</li>
-      <li>Comanda no celular</li>
-      <li>Gestão do bar num painel</li>
-    </ul>
+      <ul class="tags">
+        <li class="tag">Sem fila no balcão</li>
+        <li class="tag tag-warm">Comanda no celular</li>
+        <li class="tag">Gestão do bar num painel</li>
+        <li class="tag tag-warm">Lotação em tempo real</li>
+      </ul>
 
-    <!-- Um único ponto de decisão (decisão de design do README) -->
-    <div class="cta-par" role="group" aria-label="Escolha seu perfil">
-      <a routerLink="/planos/cliente" class="btn-party">Eu vou pro rolê</a>
-      <a routerLink="/planos/estabelecimento" class="btn-ghost">Eu tenho um bar</a>
+      <p class="alt-path">
+        <a routerLink="/sobre" class="link-quiet">
+          Ainda quero entender como funciona
+        </a>
+      </p>
     </div>
 
-    <p class="alt-path">
-      <a routerLink="/sobre" class="link-quiet">
-        Ainda quero entender como funciona <span class="arrow">→</span>
-      </a>
-    </p>
-  </div>
-
-  <!-- O app na mão de quem sai -->
-  <div class="palco" revela>
-    <app-phone-mock />
+    <!-- O app na mão de quem sai, apoiado num bloco de cor deslocado -->
+    <div class="hero-showcase" revela>
+      <div class="showcase-block" aria-hidden="true"></div>
+      <app-phone-mock />
+      <span class="carimbo" aria-hidden="true">grátis<br />pra você</span>
+    </div>
   </div>
 </section>
+
 
 <!-- ============ 2. PARA QUE SERVE ============ -->
 <section id="para-que-serve" class="section faixa">
   <div class="shell">
     <div class="section-head" revela>
-      <p class="eyebrow">Para que serve</p>
       <h2>Dois lados do balcão, o mesmo problema.</h2>
       <p class="lead">
         A noite trava nos mesmos pontos para quem consome e para quem vende.
@@ -55,7 +66,14 @@
     @for (p of personas; track p.kind) {
       <article class="persona" [class.is-flip]="p.kind === 'bar'" revela>
         <div class="persona-art">
-          <app-persona-art [kind]="p.kind" [alt]="'Ilustração: ' + p.nome" />
+          <img
+            [src]="p.foto"
+            [alt]="p.fotoAlt"
+            [class.foto-bar]="p.kind === 'bar'"
+            width="900"
+            height="1200"
+            loading="lazy"
+          />
         </div>
 
         <div class="persona-text">
@@ -91,7 +109,6 @@
   <div class="shell">
     <div class="contato card" revela>
       <div>
-        <p class="eyebrow">Contato</p>
         <h2>Dúvida, parceria ou quer o +party no seu bar?</h2>
         <p class="lead">
           Fala com a gente por e-mail. Respondemos com o time do projeto.
@@ -103,7 +120,7 @@
           contato&#64;party.app
         </a>
         <a routerLink="/equipe" class="link-quiet">
-          Conhecer a equipe <span class="arrow">→</span>
+          Conhecer a equipe
         </a>
       </div>
     </div>

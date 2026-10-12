@@ -39,7 +39,7 @@ import { Revela } from './revela';
           Análise e Desenvolvimento de Sistemas.
         </p>
         <a routerLink="/equipe" class="link-quiet">
-          Quem fez <span class="arrow">→</span>
+          Quem fez
         </a>
       </div>
     </footer>

@@ -1,6 +1,5 @@
 <section class="section page-top">
   <div class="shell">
-    <p class="eyebrow">Nossa equipe</p>
     <h1>Quem está por trás do +party.</h1>
     <p class="lead">
       Somos sete pessoas de um mesmo time, estudando Análise e Desenvolvimento de
@@ -16,7 +15,11 @@
       @for (m of membros; track m.nome) {
         <article class="card membro" [revela]="$index * 80">
           <div class="membro-topo">
-            <span class="avatar" aria-hidden="true">{{ iniciais(m.nome) }}</span>
+            @if (m.foto) {
+              <img class="avatar" [src]="m.foto" [alt]="'Foto de ' + m.nome" width="192" height="192" loading="lazy" />
+            } @else {
+              <span class="avatar" aria-hidden="true">{{ iniciais(m.nome) }}</span>
+            }
             <div>
               <h2 class="membro-nome">{{ m.nome }}</h2>
               <p class="membro-papel">{{ m.papel }}</p>
@@ -47,7 +50,7 @@
     <p class="troca" revela>
       Quer falar com a gente?
       <a routerLink="/" fragment="contato" class="link-quiet">
-        Ir para o contato <span class="arrow">→</span>
+        Ir para o contato
       </a>
     </p>
   </div>

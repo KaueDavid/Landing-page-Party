@@ -12,9 +12,10 @@
 .avatar {
   display: grid;
   place-items: center;
-  flex: 0 0 48px;
-  width: 48px; height: 48px;
-  border-radius: 14px;
+  flex: 0 0 64px;
+  width: 64px; height: 64px;
+  border-radius: 16px;
+  object-fit: cover;
   background: linear-gradient(140deg, var(--brand-400), var(--brand-700));
   color: #fff;
   font-family: var(--font-display);

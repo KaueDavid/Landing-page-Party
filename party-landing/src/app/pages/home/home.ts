@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { PersonaArt } from '../../shared/persona-art';
 import { PhoneMock } from '../../shared/phone-mock';
 import { Revela } from '../../shared/revela';
 
@@ -13,11 +12,13 @@ interface Persona {
   depois: string[];
   ctaLabel: string;
   ctaLink: string;
+  foto: string;
+  fotoAlt: string;
 }
 
 @Component({
   selector: 'app-home',
-  imports: [RouterLink, PersonaArt, PhoneMock, Revela],
+  imports: [RouterLink, PhoneMock, Revela],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
@@ -41,6 +42,8 @@ export class Home {
       ],
       ctaLabel: 'Ver planos para clientes',
       ctaLink: '/planos/cliente',
+      foto: 'img/foto-cliente.jpg',
+      fotoAlt: 'Pista de uma casa noturna com luzes vermelhas e roxas e pessoas conversando',
     },
     {
       kind: 'bar',
@@ -60,6 +63,8 @@ export class Home {
       ],
       ctaLabel: 'Ver planos para bares',
       ctaLink: '/planos/estabelecimento',
+      foto: 'img/foto-bar.jpg',
+      fotoAlt: 'Fachada de tijolos da casa noturna BASH à noite, com fila de pessoas na entrada',
     },
   ];
 }

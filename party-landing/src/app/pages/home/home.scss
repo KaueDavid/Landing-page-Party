@@ -1,110 +1,165 @@
 /* ---- Início ----
-   Hero centralizado: o visitante lê a promessa e vê o app logo abaixo,
-   antes de escolher de que lado do balcão ele está. */
+   Hero assimétrico: texto alinhado à esquerda ocupa a coluna maior, o
+   celular fica apoiado num bloco de cor deslocado na coluna menor — como
+   uma foto colada num mural, não um produto flutuando centralizado. */
 .hero {
-  padding-top: calc(var(--header-h) + clamp(48px, 8vw, 88px));
-  padding-bottom: 0;
-  text-align: center;
+  padding-top: calc(var(--header-h) + clamp(40px, 7vw, 76px));
+  padding-bottom: clamp(48px, 7vw, 84px);
 }
-.hero .shell { display: flex; flex-direction: column; align-items: center; }
-.hero h1 { max-width: 16ch; }
-.hero .lead { margin-inline: auto; max-width: 54ch; }
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(32px, 5vw, 64px);
+  align-items: center;
+}
+.hero h1 { max-width: 13ch; }
+.hero .lead { max-width: 46ch; }
 .hero .lead strong { color: var(--text); font-weight: 700; }
 
-.selo {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  margin-bottom: 22px;
-  padding: 7px 16px 7px 13px;
-  border-radius: 999px;
-  border: 1px solid rgba(91, 130, 255, .32);
-  background: rgba(91, 130, 255, .1);
+/* Ticket de entrada: uma etiqueta cortada ao meio por uma linha
+   pontilhada, com dois entalhes circulares imitando o rasgo de um
+   ingresso de verdade. É o único ponto de decisão da tela. */
+.ticket {
+  position: relative;
+  display: flex;
+  margin-top: clamp(26px, 4vw, 36px);
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  max-width: 460px;
+}
+.ticket-half {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 20px;
   font-family: var(--font-display);
-  font-size: .78rem;
+  font-weight: 700;
+  font-size: 0.97rem;
+  text-decoration: none;
+  transition: filter 0.16s ease;
+}
+.ticket-primary { background: var(--brand-500); color: #fff; border-right: 2px dashed rgba(255, 255, 255, 0.35); }
+.ticket-ghost { background: var(--surface-raised); color: var(--text); }
+.ticket-half:hover { filter: brightness(1.08); }
+.ticket-label {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
   font-weight: 600;
-  letter-spacing: .01em;
-  color: var(--brand-300);
+  letter-spacing: 0.08em;
+  opacity: 0.68;
 }
-.selo i {
-  width: 7px; height: 7px;
+.ticket::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -9px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  background: var(--brand-400);
-  box-shadow: 0 0 0 4px rgba(91, 130, 255, .16);
-  animation: selo-pulsa 2s ease-in-out infinite;
+  background: var(--bg-base);
+  transform: translateX(-50%);
+  z-index: 1;
 }
-@keyframes selo-pulsa { 50% { opacity: .3; } }
+.ticket::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -9px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--bg-base);
+  transform: translateX(-50%);
+  z-index: 1;
+}
 
-.provas {
+/* Tags soltas como adesivos, levemente rotacionadas, em vez de uma
+   lista de check limpinha. */
+.tags {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px 22px;
+  gap: 10px 12px;
   margin: 22px 0 0;
   padding: 0;
   list-style: none;
+  max-width: 460px;
 }
-.provas li {
+.tag {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 6px 13px;
+  border-radius: 8px;
+  transform: rotate(-1.4deg);
+}
+.tag:nth-child(2n) { transform: rotate(1.1deg); }
+.tag-warm {
+  color: #7a4c1c;
+  background: var(--warm-soft);
+  border-color: rgba(255, 178, 92, 0.4);
+}
+
+.alt-path { margin-top: 24px; }
+
+/* Vitrine do celular: apoiado sobre um bloco de cor deslocado, girado
+   alguns graus, com um carimbo de "grátis" preso no canto — como um
+   flyer colado torto num mural de bar. */
+.hero-showcase {
+  position: relative;
+  justify-self: center;
+  width: 100%;
+  max-width: 340px;
+}
+.showcase-block {
+  position: absolute;
+  inset: 6% -10% 0 12%;
+  background: var(--warm-soft);
+  border: 1px solid rgba(255, 178, 92, 0.3);
+  border-radius: var(--radius-lg);
+  transform: rotate(4deg);
+}
+.hero-showcase app-phone-mock {
+  position: relative;
+  display: block;
+  transform: rotate(-3deg);
+  filter: drop-shadow(var(--shadow-soft));
+}
+.carimbo {
+  position: absolute;
+  top: -14px;
+  right: 4%;
+  z-index: 2;
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  border: 2px dashed var(--warm);
+  color: var(--warm);
   display: flex;
   align-items: center;
-  gap: 7px;
-  font-size: .89rem;
-  color: var(--text-muted);
-}
-.provas li::before {
-  content: "✓";
-  font-weight: 800;
-  color: var(--brand-400);
-}
-
-.cta-par {
-  display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 14px;
-  margin-top: clamp(28px, 4vw, 38px);
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.66rem;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  transform: rotate(-11deg);
+  background: var(--bg-base);
 }
 
-.alt-path { margin-top: 22px; }
-
-/* Palco do celular: o aparelho aparece só até certo ponto e mergulha atrás de
-   uma faixa que atravessa a página, como numa vitrine. */
-.palco {
-  position: relative;
-  margin-top: clamp(40px, 5vw, 64px);
-  height: clamp(320px, 42vw, 430px);
-  overflow: hidden;
-}
-/* Faixa larga por trás do aparelho: é ela que "corta" o celular. É a mesma
-   superfície da .faixa da seção seguinte, e as duas encostam, então o bloco em
-   relevo começa no celular e segue até o fim de "Para que serve". O único fio
-   da página fica na borda de cima dela, fazendo o recorte da vitrine. */
-.palco::before {
-  content: "";
-  position: absolute;
-  inset: 42% 0 0;
-  background: var(--surface-raised);
-  border-top: 1px solid var(--border-strong);
-}
-.palco app-phone-mock {
-  position: relative;
-  z-index: 1;
-  display: block;
-}
-
-/* Entrada do celular: mais longa, com um pouco de escala, e depois do texto
-   do topo, porque é o objeto que o visitante precisa olhar por último.
-   O atraso fica escrito aqui, e não no template: o Angular prefixa as
-   variáveis CSS que aparecem em estilo de componente, então o
-   `--revela-atraso` que a diretiva escreve no elemento não chegaria. */
-.palco.revela {
-  transform: translateY(46px) scale(0.965);
-  transform-origin: 50% 100%;
+.hero-showcase.revela {
+  transform: translateY(30px) scale(0.97);
   transition:
-    opacity 1s cubic-bezier(0.22, 1, 0.36, 1) 650ms,
-    transform 1s cubic-bezier(0.22, 1, 0.36, 1) 650ms;
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1) 450ms,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) 450ms;
 }
-.palco.revela.is-visivel { transform: none; }
+.hero-showcase.revela.is-visivel { transform: none; }
 
 /* ---- Para que serve ---- */
 .persona {
@@ -117,12 +172,23 @@
 .persona + .persona { border-top: 1px solid var(--border); }
 .persona.is-flip .persona-art { order: 2; }
 
+/* Foto real do local, em vez de ilustração: recorte vertical, sem moldura
+   interna, para a imagem ocupar o card inteiro. */
 .persona-art {
-  padding: 18px;
   border-radius: var(--radius-lg);
   border: 1px solid var(--border);
   background: var(--surface);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
 }
+.persona-art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 60%;
+}
+.persona-art img.foto-bar { object-position: 50% 45%; }
 .persona-text h3 { margin-top: 14px; }
 .papel {
   margin: 6px 0 22px;
@@ -179,9 +245,12 @@
 
 /* ---- Responsivo ---- */
 @media (max-width: 860px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-copy { text-align: left; }
+  .ticket, .tags { max-width: 100%; }
+  .hero-showcase { max-width: 280px; margin: 12px auto 0; }
   .persona { grid-template-columns: 1fr; }
   .persona.is-flip .persona-art { order: 0; }
   .persona-art { max-width: 380px; }
   .contato { grid-template-columns: 1fr; }
-  .cta-par > * { flex: 1 1 220px; }
 }
